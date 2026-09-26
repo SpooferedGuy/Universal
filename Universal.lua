@@ -692,11 +692,14 @@ task.spawn(function()
 end)
 
 -- ================= WalkSpeed Input & Toggle =================
-end -- end scoped tab locals
-do -- scoped tab locals
-PlayerTab.AddInput("WalkSpeed", "", function(value)
+PlayerTab.AddInput("WalkSpeed", "16", function(value)
         local num = tonumber(value)
-        if num then WalkSpeed = num end
+        if num then
+            WalkSpeed = num
+            local character = LocalPlayer.Character
+            local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+            if humanoid then humanoid.WalkSpeed = WalkSpeed end
+        end
     end)
 
 PlayerTab.AddToggle("Loop WalkSpeed", false, function(state)
@@ -704,9 +707,17 @@ PlayerTab.AddToggle("Loop WalkSpeed", false, function(state)
     end)
 
 -- ================= JumpPower Input & Toggle =================
-PlayerTab.AddInput("JumpPower", "", function(value)
+PlayerTab.AddInput("JumpPower", "50", function(value)
         local num = tonumber(value)
-        if num then JumpPower = num end
+        if num then
+            JumpPower = num
+            local character = LocalPlayer.Character
+            local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+            if humanoid then
+                humanoid.UseJumpPower = true
+                humanoid.JumpPower = JumpPower
+            end
+        end
     end)
 
 PlayerTab.AddToggle("Loop JumpPower", false, function(state)
@@ -739,9 +750,12 @@ task.spawn(function()
 end)
 
 -- Input para Gravidade
-PlayerTab.AddInput("Gravity Value", "", function(value)
+PlayerTab.AddInput("Gravity Value", "196.2", function(value)
         local num = tonumber(value)
-        if num then GravityValue = num end
+        if num then
+            GravityValue = num
+            Workspace.Gravity = GravityValue
+        end
     end)
 
 -- Toggle para ativar/desativar loop da gravidade
@@ -795,9 +809,13 @@ task.spawn(function()
 end)
 
 -- Input para HipHeight
-PlayerTab.AddInput("HipHeight Value", "", function(value)
+PlayerTab.AddInput("HipHeight Value", "0", function(value)
         local num = tonumber(value)
-        if num then HipHeightValue = num end
+        if num then
+            HipHeightValue = num
+            local humanoid = getHumanoid()
+            if humanoid then humanoid.HipHeight = HipHeightValue end
+        end
     end)
 
 -- Toggle para ativar/desativar loop do HipHeight
