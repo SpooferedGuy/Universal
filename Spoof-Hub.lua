@@ -1,4 +1,4 @@
-local Build = loadstring(game:HttpGet("https://pastebin.com/raw/eppGB6cG"))()
+local Build = loadstring(game:HttpGet("https://raw.githubusercontent.com/SpooferedGuy/UI-Library-Spoof/main/Ui-Library.lua"))()
 local UI = Build({
     Title = "Spoof Hub, by SpooferedGuy",
     ScriptName = "SpoofHub - Universal",
