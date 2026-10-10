@@ -657,7 +657,7 @@ CombatTab.AddToggle("Wall Check", false, function(state)
     AimFOVSettings.WallCheck = state
 end)
 
-CombatTab.AddButton("Camlock (Enygma Locker)", function()
+CombatTab.AddButton("Camlock", function()
     loadstring(game:HttpGet("https://pastebin.com/raw/meqHVUZh"))()
 end)
 
@@ -1355,18 +1355,18 @@ PlayerTab.AddButton("Give TP Tool", function()
         local backpack = player:WaitForChild("Backpack")
 
         -- Remove a Tool antiga, se existir
-        if backpack:FindFirstChild("EnygmaTp") then
-            backpack:FindFirstChild("EnygmaTp"):Destroy()
+        if backpack:FindFirstChild("Tp") then
+            backpack:FindFirstChild("Tp"):Destroy()
         end
-        if player.Character and player.Character:FindFirstChild("EnygmaTp") then
-            player.Character:FindFirstChild("EnygmaTp"):Destroy()
+        if player.Character and player.Character:FindFirstChild("Tp") then
+            player.Character:FindFirstChild("Tp"):Destroy()
         end
 
         -- Cria a Tool
         local mouse = player:GetMouse()
         local tool = Instance.new("Tool")
         tool.RequiresHandle = false
-        tool.Name = "EnygmaTp"
+        tool.Name = "Tp"
 
         tool.Activated:Connect(function()
             local pos = mouse.Hit + Vector3.new(0, 2.5, 0)
